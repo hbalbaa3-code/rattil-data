@@ -1,0 +1,56 @@
+name: Publish Mushaf data
+
+# Builds mushaf-vN.zip from the pinned dataset and publishes it as release mushaf-vN,
+# where N is in the VERSION file. An existing release is never replaced: to change the data,
+# bump VERSION (and MUSHAF_DATA_VERSION in the app).
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@v5
+
+      - name: Check release
+        id: check
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V=$(tr -d '[:space:]' < VERSION)
+          echo "version=$V" >> "$GITHUB_OUTPUT"
+          if gh release view "mushaf-v$V" > /dev/null 2>&1; then
+            echo "build=false" >> "$GITHUB_OUTPUT"
+            echo "::notice title=Mushaf data::mushaf-v$V already published"
+          else
+            echo "build=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      - uses: actions/setup-python@v5
+        if: steps.check.outputs.build == 'true'
+        with:
+          python-version: "3.12"
+
+      - name: Build
+        if: steps.check.outputs.build == 'true'
+        run: |
+          python -m pip install --quiet fonttools brotli
+          bash tools/fetch-dataset.sh dataset
+          python tools/build_mushaf.py --src dataset --out dist --version ${{ steps.check.outputs.version }}
+          cat dist/mushaf-v*.json
+
+      - name: Publish
+        if: steps.check.outputs.build == 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          V=${{ steps.check.outputs.version }}
+          gh release create "mushaf-v$V" dist/mushaf-v$V.zip dist/mushaf-v$V.json dist/quran-index.json \
+            --title "Mushaf data v$V" \
+            --notes "Madinah Mushaf, QPC V2 fonts (King Fahd Glorious Quran Printing Complex), Quran.com v2 page layout. Downloaded by the Rattil app."
