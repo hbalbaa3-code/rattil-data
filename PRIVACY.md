@@ -1,6 +1,6 @@
 # Rattil — Privacy policy / سياسة الخصوصية
 
-*Last updated: 18 November 2026*
+*Last updated: 23 November 2026*
 
 ## English
 
@@ -24,7 +24,10 @@ Rattil (رتّل) is a Quran Khatma app. It is built to know nothing about you.
 - **Notifications:** only if you turn on sitting reminders; they are made on the phone.
 - **Children:** Rattil collects no data from anyone, of any age.
 
-Questions: open an issue at `github.com/hbalbaa3-code/rattil-data/issues`.
+Questions: write to h.balbaa3.dev@gmail.com, or open an issue at
+`github.com/hbalbaa3-code/rattil-data/issues`.
+
+Rattil is published on Google Play.
 
 ## العربية
 
@@ -38,4 +41,6 @@ Questions: open an issue at `github.com/hbalbaa3-code/rattil-data/issues`.
 - **الإشعارات:** فقط إن فعّلت التذكير بالجلسات، وتُنشأ على الهاتف نفسه.
 - **الأطفال:** لا يجمع رتّل أي بيانات من أحد، أيًّا كان عمره.
 
-للاستفسار: افتح مسألة (issue) على `github.com/hbalbaa3-code/rattil-data/issues`.
+للاستفسار: راسلنا على h.balbaa3.dev@gmail.com، أو افتح مسألة (issue) على `github.com/hbalbaa3-code/rattil-data/issues`.
+
+رتّل منشور على متجر Google Play.
