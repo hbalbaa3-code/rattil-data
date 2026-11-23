@@ -27,8 +27,6 @@ Rattil (رتّل) is a Quran Khatma app. It is built to know nothing about you.
 Questions: write to h.balbaa3.dev@gmail.com, or open an issue at
 `github.com/hbalbaa3-code/rattil-data/issues`.
 
-Rattil is published on Google Play.
-
 ## العربية
 
 رتّل تطبيق لختم القرآن الكريم، صُمّم كي لا يعرف عنك شيئًا.
@@ -42,5 +40,3 @@ Rattil is published on Google Play.
 - **الأطفال:** لا يجمع رتّل أي بيانات من أحد، أيًّا كان عمره.
 
 للاستفسار: راسلنا على h.balbaa3.dev@gmail.com، أو افتح مسألة (issue) على `github.com/hbalbaa3-code/rattil-data/issues`.
-
-رتّل منشور على متجر Google Play.
